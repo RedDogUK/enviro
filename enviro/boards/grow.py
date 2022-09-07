@@ -109,10 +109,11 @@ def get_sensor_readings():
   from ucollections import OrderedDict
 
   return OrderedDict({
+    "timestamp": logging.datetime_string(), # Adding timestamp to data file so that time can be correctly reflected on MTQQ broker
     "temperature": round(bme280_data[0], 2),
     "humidity": round(bme280_data[2], 2),
     "pressure": round(bme280_data[1] / 100.0, 2),
-    "luminance": round(ltr_data[BreakoutLTR559.LUX], 2),
+    "light": round(ltr_data[BreakoutLTR559.LUX], 2), # consistant variable naming with other boards.
     "moisture_1": round(moisture_levels[0], 2),
     "moisture_2": round(moisture_levels[1], 2),
     "moisture_3": round(moisture_levels[2], 2)

@@ -149,6 +149,7 @@ def get_sensor_readings():
 
   from ucollections import OrderedDict
   return OrderedDict({
+    "timestamp": logging.datetime_string(),  # adding line to json file to include the time stamp in the supplied data as time of sensor reading is not reflected when submitting data to Adafruit IO.
     "temperature": round(bme280_data[0], 2),
     "humidity": round(bme280_data[2], 2),
     "pressure": round(bme280_data[1] / 100.0, 2),
